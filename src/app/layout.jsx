@@ -16,9 +16,15 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Anakotmai:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <style>
+          {`
+            body {
+              font-family: 'Anakotmai, sans-serif';
+            }
+          `}
+        </style>
       </Head>
-      {/* Apply the font to the body */}
-      <body style={{ fontFamily: 'Anakotmai, sans-serif' }}>
+      <body>
         <AuthProvider>
           {children}
         </AuthProvider>

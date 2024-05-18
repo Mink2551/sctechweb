@@ -21,7 +21,7 @@ const HomeBody = ({ session }) => {
 
     return (
         <div className="max-w-7xl mx-auto grid">
-            <div className="grid ml-3 md:grid-cols-[1fr,1fr]">
+            <div className="grid mx-3 md:grid-cols-[1fr,1fr]">
                 <div className='md:mb-60 mb-10'>
                     <div className="text-6xl mt-48 flex text-gray-800 font-bold">
                         <p>TECHNICIAN</p>
@@ -60,7 +60,7 @@ const HomeBody = ({ session }) => {
                 <div>
                     {/* Facebook Page Plugin */}
                     <div id="fb-root"></div>
-                    <div className="fb-page rounded-2xl mt-32 pb-10 flex md:scale-100 scale-75"
+                    <div className="fb-page rounded-2xl mt-32 mx-4 pb-10 flex md:scale-100 scale-75"
                         data-href="https://www.facebook.com/sc.satitpm.official?locale=th_TH"
                         data-tabs="timeline"
                         data-width="400"
@@ -74,7 +74,7 @@ const HomeBody = ({ session }) => {
                         </blockquote>
                     </div>
                 </div>
-                <div className='mt-32'>
+                <div className='mt-32 mx-4'>
                     <div className="text-5xl flex text-gray-800 justify-center font-bold">
                         <p>แบบสอบถาม</p>
                     </div>

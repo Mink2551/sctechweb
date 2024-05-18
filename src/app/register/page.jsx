@@ -70,7 +70,7 @@ function RegisterPage() {
     <div>
       <Navbar />
       <div className="bg-orange-300 grid justify-center items-start centered-container mx-auto my-32 rounded-3xl shadow-2xl">
-        <div className="grid mt-5">
+        <div className="grid mt-5 mx-3">
           <div className="flex mb-10">
             <Image src={SC_Logo} alt="Logo" className="bg-white rounded-full" width={72} height={72} />
             <span className="mt-6 mx-2 text-xl text-gray-800">Technician Register</span>

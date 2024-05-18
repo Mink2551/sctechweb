@@ -11,13 +11,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <style>
-          {`
-            body {
-              font-family: 'Anakotmai, sans-serif';
-            }
-          `}
-        </style>
       </Head>
       <body>
         <AuthProvider>

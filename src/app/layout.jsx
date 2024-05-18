@@ -11,11 +11,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        {/* Add the link to Anakotmai font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Anakotmai:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
         <style>
           {`
             body {

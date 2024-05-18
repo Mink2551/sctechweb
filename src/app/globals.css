@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+font-face {
+    font-family: "Anakotmai";
+    src: url("/fonts/anakotmai-medium.woff2") format("woff2"),
+      url("/fonts/anakotmai-medium.woff") format("woff"),
+      url("/fonts/anakotmai-medium.eot") format("eot");
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Anakotmai";
+    src: url("/fonts/anakotmai-bold.woff2") format("woff2"),
+      url("/fonts/anakotmai-bold.woff") format("woff"),
+      url("/fonts/anakotmai-bold.eot") format("eot");
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Anakotmai";
+    src: url("/fonts/anakotmai-light.woff2") format("woff2"),
+      url("/fonts/anakotmai-light.woff") format("woff"),
+      url("/fonts/anakotmai-light.eot") format("eot");
+    font-weight: 400;
+    font-style: normal;
+  }
 
   body {
     background: linear-gradient(45deg, rgb(249, 143, 143), rgb(245, 194, 100)), rgb(243, 218, 181);
@@ -14,6 +40,5 @@
   height: 475px;
   width: 375px;
 }
-
   
   

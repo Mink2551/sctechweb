@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation';
 
 function RegisterPage() {
   const [code, setCode] = useState('');
-  const [isValidCode, setIsValidCode] = useState(true);
+  const [isValidCode, setIsValidCode] = useState(false); // Set to false by default
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +21,9 @@ function RegisterPage() {
   if (session) redirect("/")
 
   const handleCodeChange = (event) => {
-    setCode(event.target.value);
-    setIsValidCode(event.target.value === 'SCTechRegister');
+    const inputCode = event.target.value;
+    setCode(inputCode);
+    setIsValidCode(inputCode === 'SCTechRegister');
   };
 
   const handleSubmit = async (e) => {

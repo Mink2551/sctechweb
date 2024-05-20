@@ -17,7 +17,7 @@
 /* Width adjustment for screens smaller than 1200px */
 @media (max-width: 500px) {
   #facebook-plugin {
-      width: 360px;
+      width: 340px;
   }
 }
 

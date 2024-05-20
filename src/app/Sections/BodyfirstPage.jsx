@@ -23,7 +23,7 @@ const HomeBody = ({ session }) => {
         const adjustFacebookPluginWidth = () => {
             const fbPlugin = document.getElementById('facebook-plugin');
             if (window.innerWidth < 1200) {
-                fbPlugin.setAttribute('data-width', '360');
+                fbPlugin.setAttribute('data-width', '340');
             } else {
                 fbPlugin.setAttribute('data-width', '400');
             }

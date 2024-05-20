@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import SC_Logo from "../../../public/logo_sc.png";
+import SC_Logo from "../../../public/logo_sc.png"
+import Link from 'next/link';
 
 const HomeBody = ({ session }) => {
     useEffect(() => {
@@ -21,6 +22,8 @@ const HomeBody = ({ session }) => {
 
     return (
         <div className="max-w-7xl mx-auto grid">
+
+            {/* Header */}
             <div className="grid mx-3 md:grid-cols-[1fr,1fr]">
                 <div className='md:mb-60 mb-10'>
                     <div className="text-6xl mt-48 flex text-gray-800 font-bold">
@@ -35,27 +38,24 @@ const HomeBody = ({ session }) => {
                         </div>
                         {!session ? (
                             <>
-                              
+                              <div className="font-bold ml-3 text-white bg-red-500 shadow-2xl h-fit w-fit px-5 py-2 rounded-2xl m-10 text-4xl">
+                               <spa className="animate-pulse">Hello User</spa>
+                             </div>
                             </>
                         ) : (
                             <>
                              <div className="font-bold ml-3 text-white bg-red-500 shadow-2xl h-fit w-fit px-5 py-2 rounded-2xl m-10 text-4xl">
-                               <spa className="animate-pulse">{session?.user?.name}</spa>
+                               <spa className="animate-pulse">Hello {session?.user?.name}</spa>
                              </div>
-                             <div className="font-bold underline text-blue-600 hover:text-blue-700 cursor-pointer h-fit w-fit px-5 py-2 rounded-2xl text-md animate-bounce">
-                                <a>Download Packet</a>
-                             </div>
+                             <ul><li className='font-bold underline text-blue-600 hover:text-blue-700 cursor-pointer h-fit w-fit px-5 py-2 rounded-2xl text-md animate-bounce'><Link href="/packet">Download Packet</Link></li></ul>
                             </>
                         )}
                         
                     </div>
-                    {/* <div className="p-1 ml-3">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl">
-                            Discord
-                        </button>
-                    </div> */}
                 </div>
             </div>
+
+            {/* Facebook page */}
             <div className='grid md:grid-cols-[1fr,1fr]'>
                 <div>
                     {/* Facebook Page Plugin */}
@@ -74,6 +74,8 @@ const HomeBody = ({ session }) => {
                         </blockquote>
                     </div>
                 </div>
+
+                {/* Question */}
                 <div className='mt-32 mx-4'>
                     <div className="text-5xl flex text-gray-800 justify-center font-bold">
                         <p>แบบสอบถาม</p>

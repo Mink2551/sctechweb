@@ -9,6 +9,19 @@
     font-family: 'Mali', sans-serif;
 }
 
+/* Default width for the Facebook plugin */
+#facebook-plugin {
+  width: 400px;
+}
+
+/* Width adjustment for screens smaller than 1200px */
+@media (max-width: 500px) {
+  #facebook-plugin {
+      width: 360px;
+  }
+}
+
+
 .centered-container {
   height: 475px;
   width: 375px;

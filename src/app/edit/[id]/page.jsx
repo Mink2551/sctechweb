@@ -21,6 +21,9 @@ function EditPostPage({ params }) {
     const [newContent, setNewContent] = useState("");
     const [newUrl, setNewUrl] = useState("");
 
+    const [titleCharCount, setTitleCharCount] = useState(0);
+    const [contentCharCount, setContentCharCount] = useState(0);
+
     const router = useRouter();
 
     const getPostById = async (id) => {
@@ -37,6 +40,9 @@ function EditPostPage({ params }) {
             const data = await res.json();
             console.log("edit post: ", data)
             setPostData(data.post);
+
+            setTitleCharCount(data.post.title.length);
+            setContentCharCount(data.post.content.length);
 
         } catch(error) {
             console.log(error);
@@ -57,14 +63,15 @@ function EditPostPage({ params }) {
                     "content-type": "application/json"
                 },
                 body: JSON.stringify({ newTitle, newContent, newUrl })
-            });            
+            });
+            
     
             if (!res.ok) {
                 throw new Error("Failed to update a post");
             }
 
             router.refresh();
-            router.push('/packet');
+            router.push('/package');
     
         } catch (error) {
             console.log(error);
@@ -83,8 +90,10 @@ function EditPostPage({ params }) {
                         <h4 className="m-3 text-2xl text-gray-800">Edit Post!</h4>
                         <hr className="border-gray-800 w-11/12 mx-auto m-3" />
                         <form onSubmit={handleSubmit}>
-                            <input onChange={(e) => setNewTitle(e.target.value)} type="text" className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder={postData.title} />
-                            <textarea onChange={(e) => setNewContent(e.target.value)} className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder={postData.content}></textarea>
+                            <input onChange={(e) => setNewTitle(e.target.value.slice(0,15))} type="text" className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" maxLength={15} placeholder={postData.title} />
+                            <p className="text-sm ml-8">{titleCharCount}/15</p>
+                            <textarea onChange={(e) => setNewContent(e.target.value.slice(0,160))} className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" maxLength={160} placeholder={postData.content}></textarea>
+                            <p className="text-sm ml-8">{contentCharCount}/160</p>
                             <input onChange={(e) => setNewUrl(e.target.value)} type="text" className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder={postData.url} />
                             <button type="submit" className="bg-green-500 text-white border py-1 px-2 mx-auto flex rounded-lg mt-5">Submit</button>
                         </form>

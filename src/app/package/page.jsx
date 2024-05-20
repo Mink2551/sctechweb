@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import DeleteBtn from "./../Contents/DeleteBtn"
+import DeleteBtn from "../Contents/DeleteBtn"
 
 function PacketPage() {
     const { data: session, status } = useSession();
@@ -41,7 +41,7 @@ function PacketPage() {
 
     useEffect(() => {
         if (status === "unauthenticated") {
-            redirect("/");
+            redirect("/package");
         }
     }, [status]);
 
@@ -72,7 +72,7 @@ function PacketPage() {
             setContent("");
             setUrl("");
     
-            router.push("/packet");
+            router.push("/package");
         } catch (error) {
             console.error(error);
         }
@@ -98,9 +98,9 @@ function PacketPage() {
                         <hr className="border-gray-800 w-11/12 mx-auto m-3" />
                         <form onSubmit={handleSubmit}>
                             <input onChange={(e) => setTitle(e.target.value.slice(0, 15))} type="text" maxLength={15} className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder="Title 15 letters" />
-                            <p className="text-sm ml-2">{titleCharCount}/15</p>
+                            <p className="text-sm ml-8">{titleCharCount}/15</p>
                             <textarea onChange={(e) => setContent(e.target.value.slice(0, 160))} className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder="Enter Your Content" maxLength={160}></textarea>
-                            <p className="text-sm ml-2">{contentCharCount}/160</p>
+                            <p className="text-sm ml-8">{contentCharCount}/160</p>
                             <input onChange={(e) => setUrl(e.target.value)} type="text" className="bg-gray-300 w-[250px] mx-auto grid rounded-md text-md my-2" placeholder="Url" />
                             <button type="submit" className="bg-green-500 text-white border py-1 px-2 mx-auto flex rounded-lg mt-5">Submit</button>
                         </form>

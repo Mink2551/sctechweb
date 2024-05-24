@@ -33,7 +33,7 @@ const Navbar = ({ session }) => {
                         ) : (
                             <>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/reviews">Reviews</Link></li>
-                             <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/project">Project</Link></li>
+                             <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/working">Working</Link></li>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/carlendar">Carlendar</Link></li>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><a onClick={() => signOut()} className="bg-red-500 text-white py-1 px-2 rounded-md my-2" >Logout</a></li>
                             </>
@@ -64,7 +64,7 @@ const Navbar = ({ session }) => {
                         ) : (
                             <>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/reviews">Reviews</Link></li>
-                             <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/project">Project</Link></li>
+                             <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/working">working</Link></li>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><Link href="/carlendar">Carlendar</Link></li>
                              <li className='font-bold text-gray-700 cursor-pointer hover:-translate-y-1 transition-all'><a onClick={() => signOut()} className="bg-red-500 text-white py-1 px-2 rounded-md my-2" >Logout</a></li>
                             </>

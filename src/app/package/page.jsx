@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import DeleteBtn from "../Contents/DeleteBtn"
+import LoadingPage from '../loading/page';
 
 function PacketPage() {
     const { data: session, status } = useSession();
@@ -79,7 +80,7 @@ function PacketPage() {
     };        
 
     if (status === "loading") {
-        return <div>Loading...</div>;
+        return <LoadingPage/>;
     }
 
     const titleCharCount = title.length;

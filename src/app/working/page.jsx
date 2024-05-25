@@ -25,18 +25,20 @@ function ProjectPage({ params }) {
   const [ProjectAmount, setProjectAmount] = useState("");
   const [ProjectUrl, setProjectUrl] = useState("");
   const [ProjectStatus, setProjectStatus] = useState("No one taking...");
-  const [newProjectStatus, setNewProjectStatus] = useState("");
   const { id } = params;
   const router = useRouter();
 
+  // Function open side bar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // Function change page in side bar
   const handleViewChange = (view) => {
     setActiveView(view);
   };
 
+  // Function get note data from api
   const getNote = async () => {
     try {
       const res = await fetch("/api/note", {
@@ -56,6 +58,7 @@ function ProjectPage({ params }) {
     }
   }
 
+  // Function get project data from api
   const getProject = async () => {
     try {
       const res = await fetch("/api/project", {
@@ -73,8 +76,9 @@ function ProjectPage({ params }) {
     } catch (error) {
       console.log("Error loading project: ", error);
     }
-  }
+  };
 
+  // Function get project id from api
   const getProjectById = async (id) => {
     try {
         const res = await fetch(`/api/project/${id}`, {
@@ -91,14 +95,16 @@ function ProjectPage({ params }) {
     } catch(error) {
         console.log(error);
     }
-};
+  };
 
+  //  Call use function data
   useEffect(() => {
     getNote();
     getProject();
     getProjectById(id);
   }, []);
 
+  // Reload page and check status
   useEffect(() => {
     if (status === "unauthenticated") {
       redirect("/working");
@@ -109,6 +115,7 @@ function ProjectPage({ params }) {
     return <LoadingPage />
   }
 
+  // Funtion sumbit button for note create
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -141,6 +148,7 @@ function ProjectPage({ params }) {
     }
   };
 
+  // Funtion sumbit button for project create
   const ProjecthandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -178,38 +186,18 @@ function ProjectPage({ params }) {
     }
   };
 
-  const takehandleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-        // Set newProjectStatus to session user's name
-        setNewProjectStatus(session?.user?.name);
-
-        const res = await fetch(`/api/project/${id}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ newProjectStatus: session?.user?.name }) // Use session user's name here
-        });
-        
-        if (!res.ok) {
-            throw new Error("Failed to update a project");
-        }
-
-        router.push('/working');
-    } catch (error) {
-        console.log(error);
-    }
-};
-
+  // Function check lenght in input box
   const titleCharCount = title.length;
   const contentCharCount = content.length;
 
   return (
     <div className="grid">
       <Navbar session={session}/>
+
+      {/* Main */}
       <div className="grid">
+
+        {/* Side bar */}
         <div className={`fixed h-[99vh] top-1 bottom-1 left-1 border border-red-500 bg-red-400 shadow-2xl w-64 rounded-3xl duration-500 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <button
             className="absolute top-1/2 right-[-20px] border-red-500 border transform -translate-y-1/2 px-3 py-2 text-white bg-red-400 h-fit w-fit rounded-full focus:outline-none"
@@ -242,12 +230,18 @@ function ProjectPage({ params }) {
             </div>
           </div>
         </div>
+
+        {/* Body */}
         <div className="grid p-4 min-h-screen lg:w-[80%] w-[90%] mx-auto">
+
+          {/* Create Button in side bar */}
           {activeView === 'Create' && <div>
                <h1 className="mx-auto w-fit text-4xl font-bold text-gray-700">Create Content</h1>
                <hr className="my-5 w-[90%] mx-auto"/>
                <div className="grid lg:grid-cols-2 gap-y-10">
                   <div>
+
+                    {/* Create Note */}
                     <h2 className="mx-auto w-fit text-4xl font-bold text-blue-500">Create Note</h2>
                     <form onSubmit={handleSubmit} action="" className="grid lg:w-3/5 mx-auto p-10 mt-10 border-2 border-blue-600 rounded-2xl shadow-2xl hover:bg-blue-300 hover:bg-opacity-20 transition-all">
                         <p className="font-bold text-xl mx-auto text-blue-600 my-3">Note Title</p>
@@ -259,7 +253,11 @@ function ProjectPage({ params }) {
                         <button type="submit" className="mt-8 hover:bg-blue-600 bg-blue-500 w-fit px-3 py-1 font-bold text-white rounded-xl">Submit</button>
                     </form>
                   </div>
+
+
                   <div>
+
+                    {/* Create Project */}
                     <h2 className="mx-auto w-fit text-4xl font-bold text-green-500">Create Project</h2>
                     <form onSubmit={ProjecthandleSubmit} action="" className="grid lg:w-3/5 p-10 mx-auto mt-10 border-2 border-green-600 rounded-2xl shadow-2xl hover:bg-green-300 hover:bg-opacity-20 transition-all">
                            <p className="font-bold text-xl mx-auto text-green-600 my-3">Project Title</p>
@@ -289,8 +287,11 @@ function ProjectPage({ params }) {
                <hr className="my-7 w-[90%] mx-auto"/>
             </div>}
             
+          {/* Available Button in side bar */}
           {activeView === 'Available' && 
           <div>
+               
+               {/* Note show */}
                <h1 className="mx-auto w-fit text-4xl font-bold text-gray-700">Note</h1>
                <hr className="my-5 w-[90%] mx-auto"/>
                <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
@@ -311,6 +312,8 @@ function ProjectPage({ params }) {
 
                </div>
                <div>
+
+                {/* Project show */}
                <h1 className="mx-auto w-fit text-4xl mt-5 font-bold text-gray-700">Project</h1>
                <hr className="my-5 w-[90%] mx-auto"/>
                <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
@@ -345,8 +348,7 @@ function ProjectPage({ params }) {
                     </div>
                 )}
                </div>
-            </div>
-               
+            </div> 
             </div>}
 
           

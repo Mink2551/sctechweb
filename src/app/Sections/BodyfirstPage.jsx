@@ -57,7 +57,7 @@ const HomeBody = ({ session }) => {
                         Department
                     </div>
                     <div className="">
-                        <div className="font-bold ml-2 max-w-[400px] text-gray-700 m-10 text-xl">
+                        <div className="font-bold ml-2 max-w-[500px] text-gray-700 m-10 text-xl">
                             เว็บทำงาน ตารางการสอน ของชุมนุม SC หรือ ชุมนุมสื่อสารมวลชน ฝ่ายเทคนิค Enjoy na
                         </div>
                         {!session ? (
@@ -150,7 +150,7 @@ const HomeBody = ({ session }) => {
                 <h4 className="font-bold text-3xl text-gray-700">รูปแบบการจัดการเรียนการสอน</h4>
                 <div className="text-xl ml-3 mt-3 gap-y-5 grid md:w-[75%] w-[90%] font-semibold text-gray-600">
                     <li>เรียนรู้ภาคทฤษฎี</li>
-                    <li>เรียนรู้ภาคปฏิบัติ ผ่านโปรแกรม Adobe Lightroom, Adobe Premiere Pro หรือโปรแกรมอื่น ๆ ที่เกี่ยวข้อง</li>
+                    <li>เรียนรู้ภาคปฏิบัติ ผ่านโปรแกรม <span className="text-blue-500">Adobe Lightroom, Adobe Premiere Pro</span> หรือโปรแกรมอื่น ๆ ที่เกี่ยวข้อง</li>
                 </div>
             </div>
 

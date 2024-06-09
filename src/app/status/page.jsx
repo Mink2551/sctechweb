@@ -8,11 +8,14 @@ import Navbar from '../components/Navbar';
 function CarlendarPage() {
 
     const { data: session } = useSession();
-    if (!session) redirect("/");
+    if (!session) redirect("/status");
 
   return (
     <div>
       <Navbar session={session}/>
+      <div classname="">
+          
+      </div>
     </div>
   )
 }
